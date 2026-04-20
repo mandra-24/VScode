@@ -1,0 +1,83 @@
+/* Stili di base per resettare i margini e dare un font pulito */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Stile per l'HEADER */
+header {
+    background-color: #004466;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =========================================
+   OBIETTIVO 1: MENU ORIZZONTALE CON FLEXBOX
+   ========================================= */
+.menu-principale {
+    background-color: #333;
+    /* Attiviamo Flexbox */
+    display: flex; 
+    /* Disponiamo gli elementi in riga (di default è row, ma è bene specificarlo) */
+    flex-direction: row; 
+    /* Centriamo gli elementi con spazio uguale intorno */
+    justify-content: space-around; 
+    padding: 15px;
+}
+
+.menu-principale a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-principale a:hover {
+    color: #00aaff;
+}
+
+/* =========================================
+   OBIETTIVO 2: DUE COLONNE CON FLEXBOX
+   ========================================= */
+.contenuto {
+    /* Attiviamo Flexbox sul contenitore principale */
+    display: flex;
+    /* Aggiungiamo un po' di spazio vuoto tra le colonne (gap) e ai lati (padding) */
+    gap: 20px;
+    padding: 20px;
+    /* Se lo schermo diventa troppo piccolo, le colonne andranno a capo (utile per il mobile!) */
+    flex-wrap: wrap; 
+}
+
+/* Gestione delle singole colonne */
+.colonna-sinistra {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    /* Questa colonna occuperà il 70% dello spazio disponibile (circa) */
+    flex: 2; 
+}
+
+.colonna-destra {
+    background-color: #e9e9e9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    /* Questa colonna occuperà il restante 30% */
+    flex: 1; 
+}
+
+/* Stile per il FOOTER */
+footer {
+    background-color: #004466;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}

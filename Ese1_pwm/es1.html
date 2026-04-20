@@ -1,0 +1,52 @@
+<!--Crea questa struttura:
+• HEADER -- MENU -- CONTENUTO -- FOOTER
+Usa Flexbox per organizzare:
+• il menu orizzontale
+• due colonne nel contenuto
+Applicare lo stile css importandolo da un file esterno --> 
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio Flexbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Il mio primo layout Flexbox</h1>
+    </header>
+
+    <nav class="menu-principale">
+        <a href="#">Home</a>
+        <a href="#">Chi Siamo</a>
+        <a href="#">Servizi</a>
+        <a href="#">Contatti</a>
+
+        <!-- Il cancelletto # usato in questo modo si chiama dummy link (link fittizio)
+            o placeholder (segnaposto); si usa # per "fingere" che ci sia un link
+            e testare l'estetica del menu. Se fosse un sito reale al suo posto ci sarebbe 
+            l'indirizzo reale della pagina a cui vuoi che l'utente venga indirizzato. -->
+    </nav>
+
+    <main class="contenuto">
+        <section class="colonna-sinistra">
+            <h2>Colonna 1</h2>
+            <p>Questo è il contenuto della prima colonna. Flexbox gestirà la sua larghezza.</p>
+        </section>
+        
+        <aside class="colonna-destra">
+            <h2>Colonna 2</h2>
+            <p>Questo è il contenuto della seconda colonna, affiancata alla prima.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Esercizio di Programmazione Web</p>
+    </footer>
+
+</body>
+</html>
+

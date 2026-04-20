@@ -7,7 +7,7 @@ int main() {
     pid_t pid = fork();
 
     if (pid < 0) {
-        // Errore nella fork
+        // Errore nella forkl
         fprintf(stderr, "Fork fallita\n");
         return 1;
     } 
