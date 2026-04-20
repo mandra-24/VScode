@@ -1,0 +1,160 @@
+<!-- Creare una pagina:
+• Titolo della scheda «La mia galleria»
+• Definizione style interno alla pagina
+• Definire un comportamento responsivo per un container di 
+immagini+caption, le cui dimensioni sono state definite in modo 
+fisso e in modo relativo.
+• Inserire prima del container un div che contiene due pulsanti 
+«aggiungi immagine» e «rimuovi immagine» -->
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La mia galleria</title>
+    
+    <style>
+        /* =========================================
+           RESET E STILI BASE
+           ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        /* =========================================
+           DIV CONTROLLI (PULSANTI)
+           ========================================= */
+        .controls {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0b5ed7;
+        }
+
+        /* =========================================
+           CONTAINER RESPONSIVO E CARD IMMAGINI
+           ========================================= */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            /* Dimensione Relativa: Cresce e si restringe partendo da una base di 250px */
+            flex: 1 1 250px; 
+            /* Dimensione Fissa: Non supera mai i 300px di larghezza */
+            max-width: 300px; 
+            
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .gallery-item img {
+            /* Dimensione Relativa: occupa sempre il 100% del genitore (.gallery-item) */
+            width: 100%; 
+            /* Dimensione Fissa: altezza bloccata a 200px */
+            height: 200px; 
+            
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item p {
+            padding: 15px;
+            text-align: center;
+            color: #333;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button id="addBtn">Aggiungi immagine</button>
+        <button id="removeBtn">Rimuovi immagine</button>
+    </div>
+
+    <div class="gallery-container" id="gallery">
+        </div>
+
+    <script>
+        // =========================================
+        // LOGICA JAVASCRIPT
+        // =========================================
+        
+        // 1. Selezione degli elementi dal DOM
+        const gallery = document.getElementById('gallery');
+        const addBtn = document.getElementById('addBtn');
+        const removeBtn = document.getElementById('removeBtn');
+
+        // Contatore per avere caption e immagini diverse
+        let imageCounter = 0;
+
+        // 2. Evento per aggiungere un'immagine
+        addBtn.addEventListener('click', () => {
+            imageCounter++;
+            
+            // Crea il div che fa da "card"
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'gallery-item';
+
+            // Crea l'elemento immagine
+            const img = document.createElement('img');
+            // Uso Picsum (un servizio gratuito) per generare un'immagine casuale
+            img.src = `https://picsum.photos/300/200?random=${imageCounter}`;
+            img.alt = `Immagine generata numero ${imageCounter}`;
+
+            // Crea l'elemento caption (paragrafo)
+            const caption = document.createElement('p');
+            caption.textContent = `Immagine ${imageCounter}`;
+
+            // Assembla la card inserendo immagine e caption
+            itemDiv.appendChild(img);
+            itemDiv.appendChild(caption);
+
+            // Aggiunge la card finita al container principale
+            gallery.appendChild(itemDiv);
+        });
+
+        // 3. Evento per rimuovere un'immagine
+        removeBtn.addEventListener('click', () => {
+            // Verifica se esiste almeno un elemento figlio nel container
+            if (gallery.lastElementChild) {
+                // Rimuove l'ultimo elemento aggiunto
+                gallery.removeChild(gallery.lastElementChild);
+                imageCounter--;
+            } else {
+                alert('La galleria è già vuota!');
+            }
+        });
+    </script>
+</body>
+</html>
